@@ -25,7 +25,8 @@ public class PdfController {
         byte[] content = null;
         String fileName = "example.pdf";
         try {
-            content = pdfGeneratorService.generateFromResource(CLASSPATH_STATIC_PDF + fileName);
+//            content = pdfGeneratorService.generateFromResource(CLASSPATH_STATIC_PDF + fileName);
+            content = pdfGeneratorService.generateFromTemplate("home");
             return ResponseEntity.ok()
                     .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName)
                     .header(HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS, HttpHeaders.CONTENT_DISPOSITION)
