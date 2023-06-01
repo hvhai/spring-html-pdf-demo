@@ -21,7 +21,7 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("org.jsoup:jsoup:1.15.4")
+	implementation("org.jsoup:jsoup:1.16.1")
 	implementation("org.xhtmlrenderer:flying-saucer-pdf-openpdf:9.1.22")
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
