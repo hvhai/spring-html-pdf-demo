@@ -27,7 +27,9 @@ public class PdfGeneratorService {
     }
 
     public byte[] generateFromTemplate(String template) throws IOException {
-        String htmlContent = springTemplateEngine.process(template, new Context());
+        Context context = new Context();
+        context.setVariable("createBy", "hive.happymoney.com");
+        String htmlContent = springTemplateEngine.process(template, context);
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         ITextRenderer renderer = new ITextRenderer();
@@ -50,7 +52,7 @@ public class PdfGeneratorService {
         templateEngine.setTemplateResolver(templateResolver);
 
         Context context = new Context();
-        context.setVariable("to", "Baeldung.com");
+        context.setVariable("to", "hive.happymoney.com");
 
         return templateEngine.process("thymeleaf_template", context);
     }

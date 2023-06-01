@@ -30,7 +30,7 @@ public class PdfController {
             return ResponseEntity.ok()
                     .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName)
                     .header(HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS, HttpHeaders.CONTENT_DISPOSITION)
-                    .contentType(MediaType.parseMediaType("application/zip"))
+                    .contentType(MediaType.parseMediaType("application/pdf"))
                     .body(content);
         } catch (Exception exception) {
             log.error("error", exception);
