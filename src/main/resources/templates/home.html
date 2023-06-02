@@ -23,10 +23,30 @@
             margin: 1in;
         }
 
+        /* ---------Header and Footer-------------*/
+        div.header {
+            display: block; text-align: center;
+            position: running(header);
+        }
+        div.footer {
+            display: block; text-align: center;
+            position: running(footer);
+        }
+        div.content {page-break-after: always;}
+        @page {
+            @top-center { content: element(header) }
+        }
+        @page {
+            @bottom-center { content: element(footer) }
+        }
+        /* ---------Header and Footer-------------*/
     </style>
 </head>
 <body>
 <h1>Welcome</h1>
+<div class='header'>Header</div>
+<div class='footer'>Footer</div>
+<div class='content'>
 <main id="main" class="site-main">
 
 
@@ -752,7 +772,7 @@
     </div>
 
 </main>
-
+</div>
 
 <p th:text="'Create by ' + ${createBy} + '!'">Created by test</p>
 </body>
