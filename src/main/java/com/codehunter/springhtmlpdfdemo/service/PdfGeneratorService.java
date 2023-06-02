@@ -1,6 +1,7 @@
 package com.codehunter.springhtmlpdfdemo.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;
@@ -11,7 +12,9 @@ import org.thymeleaf.spring6.SpringTemplateEngine;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import org.xhtmlrenderer.layout.SharedContext;
+import org.xhtmlrenderer.pdf.ITextOutputDevice;
 import org.xhtmlrenderer.pdf.ITextRenderer;
+import org.xhtmlrenderer.pdf.ITextReplacedElementFactory;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -20,6 +23,7 @@ import java.nio.file.Files;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class PdfGeneratorService {
     private final SpringTemplateEngine springTemplateEngine;
 
@@ -37,9 +41,12 @@ public class PdfGeneratorService {
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         ITextRenderer renderer = new ITextRenderer();
+        log.info("Dot per point {} ", renderer.getDotsPerPoint());
         SharedContext sharedContext = renderer.getSharedContext();
         sharedContext.setPrint(true);
         sharedContext.setInteractive(false);
+        sharedContext.setReplacedElementFactory(new ITextReplacedElementFactory(new ITextOutputDevice(renderer.getDotsPerPoint())));
+        sharedContext.getTextRenderer().setSmoothingThreshold(0);
         renderer.setDocumentFromString(xhtmlContent);
         renderer.layout();
         renderer.createPDF(byteArrayOutputStream);
