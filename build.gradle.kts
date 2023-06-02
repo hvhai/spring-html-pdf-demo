@@ -23,6 +23,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.jsoup:jsoup:1.16.1")
 	implementation("org.xhtmlrenderer:flying-saucer-pdf-openpdf:9.1.22")
+	implementation("commons-io:commons-io:2.11.0")
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	annotationProcessor("org.projectlombok:lombok")
