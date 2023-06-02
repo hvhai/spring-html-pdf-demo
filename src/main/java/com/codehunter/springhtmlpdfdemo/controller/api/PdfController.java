@@ -26,7 +26,7 @@ public class PdfController {
         String fileName = "example.pdf";
         try {
 //            content = pdfGeneratorService.generateFromResource(CLASSPATH_STATIC_PDF + fileName);
-            content = pdfGeneratorService.generateFromTemplate("page");
+            content = pdfGeneratorService.generateFromTemplate(page);
             return ResponseEntity.ok()
                     .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName)
                     .header(HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS, HttpHeaders.CONTENT_DISPOSITION)
@@ -34,7 +34,7 @@ public class PdfController {
                     .body(content);
         } catch (Exception exception) {
             log.error("error", exception);
+            throw new RuntimeException(exception);
         }
-        return null;
     }
 }
