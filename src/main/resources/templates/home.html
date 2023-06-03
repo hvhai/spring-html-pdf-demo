@@ -43,12 +43,24 @@
             }
         }
         /* ---------Header and Footer-------------*/
+
+        img {
+            height: auto;
+            /* Make sure images are scaled correctly. */
+            max-width: 100%;
+            /* Adhere to container width. */
+        }
+
+        figure {
+            margin: 1em 0;
+            /* Extra wide images within figure tags don't overflow the content area. */
+        }
     </style>
 </head>
 <body>
 <h1>Welcome</h1>
 <div class='header'>
-    <img src="https://ci5.googleusercontent.com/proxy/H01LC4txOcL5wCmLYt8NI-xKbM9TI8EDWXPenK_Vr1oIC8TUOYI0ONcZw6pdHkEnC9l9K1wXhWA-vbX-mwimcFNW=s0-d-e1-ft#https://happymoney.com/happy_hive_logo_horz.png"></img>
+    <img src="https://happymoney.com/happy_hive_logo_horz.png"></img>
 </div>
 <div class='footer'>
     <p th:text="'Create by ' + ${createBy} + '!'">Created by test</p>
@@ -63,13 +75,11 @@
         <figure class="hero-wide" itemprop="image" itemscope="" itemtype="http://schema.org/ImageObject">
 
             <div class="post-thumbnail">
-                <img width="1500" height="940"
+                <img
                      src="https://149572954.v2.pressablecdn.com/wp-content/uploads/2022/06/mobile-first-css-time-for-a-rethink.png"
                      class="attachment-post-thumbnail size-post-thumbnail wp-post-image"
                      alt="A chef octopus thoughtfully mixes a bowl while consulting a CSS recipe book" decoding="async"
-                     itemprop="contentUrl"
-                     srcset="https://i0.wp.com/alistapart.com/wp-content/uploads/2022/06/mobile-first-css-time-for-a-rethink.png?w=1500&amp;ssl=1 1500w, https://i0.wp.com/alistapart.com/wp-content/uploads/2022/06/mobile-first-css-time-for-a-rethink.png?resize=300%2C188&amp;ssl=1 300w, https://i0.wp.com/alistapart.com/wp-content/uploads/2022/06/mobile-first-css-time-for-a-rethink.png?resize=1024%2C642&amp;ssl=1 1024w, https://i0.wp.com/alistapart.com/wp-content/uploads/2022/06/mobile-first-css-time-for-a-rethink.png?resize=768%2C481&amp;ssl=1 768w"
-                     sizes="(max-width: 1500px) 100vw, 1500px"></img></div><!-- .post-thumbnail -->
+                     itemprop="contentUrl"></img></div><!-- .post-thumbnail -->
 
             <span class="illustrator-credit" itemprop="contributor" itemscope="" itemtype="http://schema.org/Person">
 			Illustration by <a href="https://alistapart.com/author/tom-shannon/" title="Posts by Tom Shannon"
