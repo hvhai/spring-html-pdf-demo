@@ -15,6 +15,9 @@
     }
     @page {
       @bottom-center { content: element(footer) }
+      @bottom-right {
+        content: "Page " counter(page) " of " counter(pages);
+      }
     }
   </style>
 </head>

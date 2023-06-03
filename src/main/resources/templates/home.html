@@ -38,14 +38,21 @@
         }
         @page {
             @bottom-center { content: element(footer) }
+            @bottom-right {
+                content: "Page " counter(page) " of " counter(pages);
+            }
         }
         /* ---------Header and Footer-------------*/
     </style>
 </head>
 <body>
 <h1>Welcome</h1>
-<div class='header'>Header</div>
-<div class='footer'>Footer</div>
+<div class='header'>
+    <img src="https://ci5.googleusercontent.com/proxy/H01LC4txOcL5wCmLYt8NI-xKbM9TI8EDWXPenK_Vr1oIC8TUOYI0ONcZw6pdHkEnC9l9K1wXhWA-vbX-mwimcFNW=s0-d-e1-ft#https://happymoney.com/happy_hive_logo_horz.png"></img>
+</div>
+<div class='footer'>
+    <p th:text="'Create by ' + ${createBy} + '!'">Created by test</p>
+</div>
 <div class='content'>
 <main id="main" class="site-main">
 
@@ -774,6 +781,5 @@
 </main>
 </div>
 
-<p th:text="'Create by ' + ${createBy} + '!'">Created by test</p>
 </body>
 </html>
