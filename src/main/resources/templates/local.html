@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+  <style>
+    div.header {
+      display: block; text-align: center;
+      position: running(header);
+    }
+    div.footer {
+      display: block; text-align: center;
+      position: running(footer);
+    }
+    div.content {page-break-after: always;}
+    @page {
+      @top-center { content: element(header) }
+    }
+    @page {
+      @bottom-center { content: element(footer) }
+      @bottom-right {
+        content: "Page " counter(page) " of " counter(pages);
+      }
+    }
+  </style>
+</head>
+<body>
+<div class='header'>Header</div>
+<div class='footer'>
+  <p th:text="'Create by ' + ${createBy} + ' on: ' + ${#dates.format(createAt, 'yyyy-MM-dd')} + '!'">Created by test</p>
+</div>
+<div class='content'>
+  <p>Page1</p>
+  <img src="../static/image/hive-logo.png" th:src ="@{classpath:static/image/hive-logo.png}"></img>
+</div>
+<div class='content'>Page2</div>
+<div class='content'>Page3</div>
+<div class='content'>Page4</div>
+</body>
+</html>
