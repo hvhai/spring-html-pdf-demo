@@ -20,6 +20,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.time.ZonedDateTime;
+import java.util.Date;
 
 @Service
 @RequiredArgsConstructor
@@ -35,9 +37,11 @@ public class PdfGeneratorService {
     public byte[] generateFromTemplate(String template) throws IOException {
         Context context = new Context();
         context.setVariable("createBy", "hive.happymoney.com");
+        context.setVariable("createAt", new Date());
         String htmlContent = springTemplateEngine.process(template, context);
 
         String xhtmlContent = htmlToXhtml(htmlContent);
+//        String xhtmlContent = htmlContent;
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         ITextRenderer renderer = new ITextRenderer();
@@ -45,7 +49,8 @@ public class PdfGeneratorService {
         SharedContext sharedContext = renderer.getSharedContext();
         sharedContext.setPrint(true);
         sharedContext.setInteractive(false);
-        sharedContext.setReplacedElementFactory(new ITextReplacedElementFactory(new ITextOutputDevice(renderer.getDotsPerPoint())));
+//        sharedContext.setReplacedElementFactory(new ITextReplacedElementFactory(new ITextOutputDevice(renderer.getDotsPerPoint())));
+//        sharedContext.setReplacedElementFactory(new ImageReplacedElementFactory());
         sharedContext.getTextRenderer().setSmoothingThreshold(0);
         renderer.setDocumentFromString(xhtmlContent);
         renderer.layout();
