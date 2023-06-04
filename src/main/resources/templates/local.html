@@ -21,15 +21,18 @@
       }
     }
   </style>
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{classpath:static/css/style.css}">
 </head>
 <body>
-<div class='header'>Header</div>
+<div class='header'>
+  <img id="hiveLogo" src="../static/image/hive-logo.png" th:src ="@{classpath:static/image/hive-logo.png}"></img>
+</div>
 <div class='footer'>
   <p th:text="'Create by ' + ${createBy} + ' on: ' + ${#dates.format(createAt, 'yyyy-MM-dd')} + '!'">Created by test</p>
 </div>
 <div class='content'>
+  <h1>Content</h1>
   <p>Page1</p>
-  <img src="../static/image/hive-logo.png" th:src ="@{classpath:static/image/hive-logo.png}"></img>
 </div>
 <div class='content'>Page2</div>
 <div class='content'>Page3</div>
